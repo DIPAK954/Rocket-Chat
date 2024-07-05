@@ -3,6 +3,7 @@ import "./detail.css";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { format } from "date-fns";
 const Detail=()=>{
     
     const { chatId,user,isCurrentUserBlocked,isReceiverBlocked,changeBlock} = useChatStore();
@@ -24,13 +25,23 @@ const Detail=()=>{
         console.log(err)
        }
     }
+
+    // const getLastMessageTime = () => {
+    //     if (!chat?.messages || chat.messages.length === 0) {
+    //       return "";
+    //     }
+    //     const lastMessage = chat.messages[chat.messages.length - 1];
+    //     return format(new Date(lastMessage.createdAt.seconds * 1000), 'PPpp'); // Adjust this format as needed
+    //   };
+
+
     return (
     <div className="detail">
         
         <div className="user">
             <img src={user?.avatar || "./avatar.png"}alt="" />
             <h3>{user?.username}</h3>
-            <p>Lorem ipsum dolor sit </p>
+            {/* <p>{getLastMessageTime()}</p> */}
         </div>
 
         <div className="info">

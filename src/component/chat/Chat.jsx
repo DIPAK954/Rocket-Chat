@@ -12,6 +12,7 @@ import { db } from "../../lib/fiebase";
 import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
+import { format } from "date-fns";
 
 const Chat = () => {
   const [chat, setChat] = useState();
@@ -113,6 +114,14 @@ const Chat = () => {
     setText("");
   };
 
+  const getLastMessageTime = () => {
+    if (!chat?.messages || chat.messages.length === 0) {
+      return "";
+    }
+    const lastMessage = chat.messages[chat.messages.length - 1];
+    return format(new Date(lastMessage.createdAt.seconds * 1000), 'PPpp'); // Adjust this format as needed
+  };
+
   return (
     <div className="chat">
       <div className="top">
@@ -120,7 +129,7 @@ const Chat = () => {
           <img src={user?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
             <span>{user?.username}</span>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>{getLastMessageTime()}</p>
           </div>
         </div>
         <div className="icons">
@@ -164,7 +173,7 @@ const Chat = () => {
 
         <input
           type="text"
-          placeholder={(isCurrentUserBlocked || isReceiverBlocked) ? "Ypu cannot send a message" : "Type a message..."}
+          placeholder={(isCurrentUserBlocked || isReceiverBlocked) ? "You cannot send a message" : "Type a message..."}
           value={text}
           onChange={(e) => setText(e.target.value)}
           disabled={isCurrentUserBlocked || isReceiverBlocked}

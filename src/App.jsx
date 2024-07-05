@@ -34,7 +34,7 @@ function App() {
         <>
           <List></List>
           {chatId && <Chat></Chat>}
-          {chatId && <Detail></Detail>}
+          {/* {chatId && <Detail></Detail>} */}
         </>
       ) : (
         <Login />

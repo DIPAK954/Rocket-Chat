@@ -13,6 +13,7 @@ import { useChatStore } from "../../lib/chatStore";
 import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
 import { format } from "date-fns";
+import Detail from "../detail/Detail";
 
 const Chat = () => {
   const [chat, setChat] = useState();
@@ -23,6 +24,7 @@ const Chat = () => {
     url:"",
   });
 
+  const [showDetail, setShowDetail] = useState(false);
   const { chatId, user,isCurrentUserBlocked,isReceiverBlocked } = useChatStore();
   const { currentUser } = useUserStore();
 
@@ -133,9 +135,9 @@ const Chat = () => {
           </div>
         </div>
         <div className="icons">
-          <img src="./phone.png" alt="" />
-          <img src="./video.png" alt="" />
-          <img src="./info.png" alt="" />
+          {/* <img src="./phone.png" alt="" />
+          <img src="./video.png" alt="" /> */}
+          <img src="./info.png" alt="" onClick={() => setShowDetail((prev) => !prev)}/>
         </div>
       </div>
 
@@ -167,8 +169,8 @@ const Chat = () => {
           <img src="./img.png" alt="" />
           </label>l
           <input type="file" id="file" style={{display:"none"}} onChange={handleImg}/>
-          <img src="./camera.png" alt="" />
-          <img src="./mic.png" alt="" />
+          {/* <img src="./camera.png" alt="" />
+          <img src="./mic.png" alt="" /> */}
         </div>
 
         <input
@@ -195,6 +197,9 @@ const Chat = () => {
           Send
         </button>
       </div>
+
+      {showDetail && <Detail />}  {/* Conditionally render the Detail component */}
+
     </div>
   );
 };

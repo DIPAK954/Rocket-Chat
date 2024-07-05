@@ -12,9 +12,9 @@ const Userinfo = () =>{
                 <h3>{currentUser.username}</h3>
             </div>
             <div className="icons">
-                <img src="./more.png" alt=""/>
+                {/* <img src="./more.png" alt=""/>
                 <img src="./video.png" alt=""/>
-                <img src="./edit.png" alt=""/>
+                <img src="./edit.png" alt=""/> */}
             </div>
         </div>
     )

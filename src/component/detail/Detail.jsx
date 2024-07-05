@@ -46,7 +46,7 @@ const Detail=()=>{
 
         <div className="info">
 
-            <div className="option">
+            {/* <div className="option">
                 <div className="title">
                     <span>Chat Setting</span>
                     <img src="./arrowUp.png" alt="" />
@@ -106,7 +106,7 @@ const Detail=()=>{
                     <span>Shared Files</span>
                     <img src="./arrowUp.png" alt="" />
                 </div>
-            </div>
+            </div> */}
 
             <button onClick={handleBlock}>{
                 isCurrentUserBlocked ? "You are Blocked!" : isReceiverBlocked ? "User Blocked!" : "Block User"}</button>
